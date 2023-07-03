@@ -1,0 +1,15 @@
+- hosts: all
+  tasks:
+    - name: installing httpd
+      yum: name=httpd state=present
+
+    - name: starting the web server
+      service: name=httpd state=started
+
+    - name: installing git
+      yum: pkg=git state=present
+
+    - name: git checkout
+      git:
+        repo: "https://github.com/CleverProgrammers/pwj-netflix-clone.git"
+        dest: "/var/www/html/"
